@@ -1,0 +1,8 @@
+:host ::ng-deep .table tr td {
+    vertical-align: middle;
+}
+
+:host ::ng-deep .table .tr {
+    display: table-row;
+    vertical-align: middle;
+}

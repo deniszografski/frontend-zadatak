@@ -1,0 +1,29 @@
+<app-food-add></app-food-add>
+<div class="row"><button class="btn btn-primary pull-right" >Add food</button></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="foods.length > 0 ; else noData">
+      <tr
+      *ngFor="let foodEl of foods; let i = index"
+       (click)="onEditItem(i)">
+
+        <td>{{ foodEl.name }}</td>
+        <td>{{ foodEl.price }}</td>
+        <td>
+          <form #formEdit="ngForm">
+            <button class="btn btn-warning" type="submit" (click)="onEditItem(i)">Edit Food</button>
+            <button class="btn btn-danger" type="submit" (click)="onDeleteItem(i,formEdit)">Delete Food</button>
+          </form>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-template #noData><tr class="danger"><td><p>No data or wrong data type</p></td></tr></ng-template>
+  </tbody>
+</table>
